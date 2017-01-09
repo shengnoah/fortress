@@ -20,7 +20,7 @@ class App extends lapis.Application
         filter:'streams'..':'..'673b1666ca624a6231a460fa'
     }
     --进行鉴权信息设定
-    url  = GMoonSDK\author 'supervisor', 'password', '127.0.0.1', '12600'
+    url  = GMoonSDK\auth 'supervisor', 'password', '127.0.0.1', '12600'
     
     --调用对应'TYPE'相对应的REST服务，返回结果。
     ret = GMoonSDK\dealStream 's_ua', param_data
