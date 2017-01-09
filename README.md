@@ -10,7 +10,8 @@ GrayLog REST API Wrapper for Moonscript
 ```lua
 class App extends lapis.Application
   "/testcase": =>
-    param_data= {
+    --准备对应REST的输入参数，如果相应该有的项目没有设定会输出NG原因。
+    param_data= {
         fields:'username',
         limit:3,
         query:'*',
@@ -18,8 +19,10 @@ class App extends lapis.Application
         to:'2017-01-06 00:00:00',
         filter:'streams'..':'..'673b1666ca624a6231a460fa'
     }
-
-    url  = GMoonSDK\author 'supervisor', 'password', '127.0.0.1', '12600'
-    ret = GMoonSDK\dealStream 's_ua', param_data
+    --进行鉴权信息设定
+    url  = GMoonSDK\author 'supervisor', 'password', '127.0.0.1', '12600'
+    
+    --调用对应'TYPE'相对应的REST服务，返回结果。
+    ret = GMoonSDK\dealStream 's_ua', param_data
     ret
 ```    
