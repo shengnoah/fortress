@@ -1,4 +1,4 @@
-# MoonScript for Graylog
+# MoonScript for GrayLog
 GrayLog REST API Wrapper for Moonscript
 
 
