@@ -17,7 +17,23 @@ class GMoonSDK
         }
         return headers 
 
-    @author: (username, password, host, port) =>
+    @auth: (username, password, host, port) =>
+        --Input parameter check process
+        errList = {}
+        if type(port) == 'nil'
+            table.insert(errList, "port is nil\n")
+        if type(host) == 'nil'
+            table.insert(errList, "host is nil\n")
+        if type(password) == 'nil'
+            table.insert(errList, "password is nil\n")
+        if type(username) == 'table'
+            table.insert(errList, "username is nil\n")
+
+        num = table.getn(errList) 
+        if num > 0 
+            return errList
+
+       --Set auth info
         self.uname = username
         self.pwd = password 
         self.host = host
@@ -26,7 +42,7 @@ class GMoonSDK
         self.headers_info = self\build_headers()
         return self.url
 
-    @get_request:(req_url) =>
+    @getRequest:(req_url) =>
         body, status_code, headers = http.simple {
             url: req_url 
             method: "GET"
@@ -34,17 +50,35 @@ class GMoonSDK
         }
         return body
 
-    @call: (s_type, s_param) =>
-        --get param list
+    @checkParam:(s_type, s_param) =>
+        --Check configuration info
+        if type(self.url) == "nil"
+            return 'auth info err.'
+
+        --Check type  
         info = self.endpoints[s_type]
+        chk_flg = type(info)
+        if chk_flg == "nil"
+            return "Input parameter error,unknow type."
+
+        --Get master key
         key = ''
         for k,v in pairs info
             key = k 
 
-        --check param
+        --Check param
         str = ''
         for k,v in pairs info[key]
+            if type(s_param[v]) == 'nil'
+                return info[key][k]..":is nil"
             str = str..s_param[v]
+        return "OK", str
+
+    @call: (s_type, s_param) =>
+        --Get master key
+        key = ''
+        for k,v in pairs self.endpoints[s_type]
+            key = k 
 
         --encode url 
         url_data = ngx.encode_args(s_param)
@@ -52,6 +86,14 @@ class GMoonSDK
         req_url = tmp_url..url_data
 
         --HTTP GET request
-        ret = self\get_request req_url
+        ret = self\getRequest req_url
         return ret
 
+    @dealStream: (s_type, s_param) =>
+        ret = ''
+        status, param_list = GMoonSDK\checkParam s_type, s_param
+        if status == "OK"
+            ret = GMoonSDK\call s_type, s_param
+        else 
+            ret = status 
+        return ret 
