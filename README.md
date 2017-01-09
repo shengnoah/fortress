@@ -5,7 +5,7 @@ GrayLog REST API Wrapper for Moonscript
 此程序是Graylog REST对外提供的API的一个Moonscript的Wrapper封装，把REST接口提供的数据服务，变成通过函数调用的方式取得相应REST接口返回的数据。
 
 
-下面是一个实际的基于Lapis框架程序中调用此SD的例子：
+下面是一个实际的基于Lapis框架程序中调用此SDK的例子：
 
 ```lua
 class App extends lapis.Application
