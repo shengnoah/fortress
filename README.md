@@ -26,3 +26,13 @@ class App extends lapis.Application
     ret = GMoonSDK\dealStream 's_ua', param_data
     ret
 ```    
+上文提到 ‘TYPE’， 其实就是对Endpoints的一种编号，基本上和GrayLog REST API是一对一关系。
+
+```lua
+   endpoints: {
+        's_uat':{'/search/universal/absolute/terms':{'field', 'query', 'from', 'to', 'limit'} }
+        's_ua':{'/search/universal/absolute':{'fields', 'query', 'from', 'to', 'limit'} }
+        's_urt':{'/search/universal/relative/terms':{'field', 'query', 'range'} }
+        's_ut':{'/search/universal/relative':{'fields', 'query', 'range'} }
+    }
+```
