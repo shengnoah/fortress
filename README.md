@@ -36,3 +36,4 @@ class App extends lapis.Application
         's_ut':{'/search/universal/relative':{'fields', 'query', 'range'} }
     }
 ```
+理论上说，可以个修改以上的数据结构，对应各种REST API的服封装(GET),只要知道对应URL与可接收的参数列表。
