@@ -44,7 +44,7 @@ class App extends lapis.Application
 
 ### Dashboard的Widget数据更新
 
-      rglog = require "resty-graylog
+      rglog = require "GRestySDK"
       data = '{
        "description": "user-port",
        "type": "QUICKVALUES",
