@@ -46,14 +46,14 @@ class App extends lapis.Application
 
       rglog = require "GRestySDK"
       data = '{
-       "description": "user-port",
+       "description": "scan-port",
        "type": "QUICKVALUES",
        "config": {
          "timerange": {
            "type": "relative",
-           "range": 28800 
+           "range": 123
          },
-         "field": "dst_port",
+         "field": "port",
          "stream_id": "56e7ab11fd624ca91defeb11",
          "query": "username: candylab",
          "show_data_table": true,
