@@ -7,6 +7,10 @@ GrayLog REST API Wrapper for Moonscript
 
 下面是一个实际的基于Lapis框架程序中调用此SDK的例子：
 
+
+
+### Stream数据取得
+
 ```lua
 class App extends lapis.Application
   "/testcase": =>
@@ -37,3 +41,5 @@ class App extends lapis.Application
     }
 ```
 理论上说，可以个修改以上的数据结构，对应各种REST API的服封装(GET),只要知道对应URL与可接收的参数列表。
+
+### Dashboard的Widget数据更新
