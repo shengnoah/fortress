@@ -43,3 +43,25 @@ class App extends lapis.Application
 理论上说，可以个修改以上的数据结构，对应各种REST API的服封装(GET),只要知道对应URL与可接收的参数列表。
 
 ### Dashboard的Widget数据更新
+
+      rglog = require "resty-graylog
+      data = '{
+       "description": "user-port",
+       "type": "QUICKVALUES",
+       "config": {
+         "timerange": {
+           "type": "relative",
+           "range": 28800 
+         },
+         "field": "dst_port",
+         "stream_id": "56e7ab11fd624ca91defeb11",
+         "query": "username: candylab",
+         "show_data_table": true,
+         "show_pie_chart": true
+       },
+       "cache_time": 10
+     }
+     '
+      url  = rglog\auth 'admin', 'password', '0.0.0.0', '12345'
+      rglog\updateWidget('57a7bc60be624b691feab6f','019bca13-50cf-481e-a123-a0d2e649b41a',data)
+
